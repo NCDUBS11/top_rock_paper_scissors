@@ -24,3 +24,20 @@ function playerSelection() {
     }
 }
 
+//Computer selection function
+
+function computerSelection(){
+    let selection = Math.floor(Math.random()*(4-1)+1);
+    switch (selection) {
+    case 1:
+        return "Rock";
+        break;
+    case 2:
+        return "Paper";
+        break;
+    case 3:
+        return "Scissors";
+        break;
+    }
+    
+}
