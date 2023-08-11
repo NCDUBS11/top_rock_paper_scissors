@@ -4,7 +4,6 @@
 
 function caseCorrection(string){
     let temp = string[0].toUpperCase() + string.slice(1).toLowerCase();
-    console.log (`Corrected string to: ${temp}`);
     return temp;
 }
 
@@ -20,8 +19,9 @@ function playerSelection() {
     }
     else{
         alert("You must choose 'Rock', 'Paper' or 'Scissors'.  Try again.");
-        playerSelection();
+        return playerSelection();
     }
+
 }
 
 //Computer selection function
@@ -30,53 +30,57 @@ function computerSelection(){
     let selection = Math.floor(Math.random()*(4-1)+1);
     switch (selection) {
     case 1:
+        console.log ("Computer chose: Rock");
         return "Rock";
         break;
     case 2:
+        console.log ("Computer chose: Paper");
         return "Paper";
         break;
     case 3:
+        console.log ("Computer chose: Scissors");
         return "Scissors";
         break;
     }
-    
+        
 }
 
 //Rock Paper Scissors Game function
 
-function rpsGame(playerSelection, computerSelection){
+function rpsGame(playerSelection, computerSelection, playerScore, computerScore){
 
     if (playerSelection == "Rock" && computerSelection == "Scissors"){
         alert("You Won! Rock beats Scissors!");
         console.log ("You won this round!");
-        ++playerScore;
+        return ++playerScore;
     }
 
     else if (playerSelection == "Paper" && computerSelection == "Rock"){
 
         alert("You Won! Paper beats Rock!");
         console.log ("You won this round!");
-        ++playerScore;
+        return ++playerScore;
     }
 
     else if (playerSelection == "Scissors" && computerSelection == "Paper"){
 
         alert("You Won! Scissors beats Paper!");
         console.log ("You won this round!");
-        ++playerScore;
+        return ++playerScore;
     }
 
     else if (playerSelection == computerSelection){
         alert(`You both chose ${playerSelection}! No points awarded this round.`);
         console.log (`Draw. Both players chose ${playerSelection}.`);
+        return null;
     }
     else{
         alert(`You Lost!  The computer beat your ${playerSelection} with ${computerSelection}!`);
-        ++computerScore;
+        return ++computerScore;
     }
 }
 
-//Introduce rounds with a first to 3 points wins scoring system
+//Introduce multiple rounds with a first to 3 points wins scoring system
 
 function rockPaperScissors(){
 
@@ -86,17 +90,15 @@ function rockPaperScissors(){
 
     while (playerScore < 3 || computerScore < 3){
 
-        playerScore = 0;
-        computerScore = 0;
-        round = 1;
-
         alert (`Round ${round}!`);
         console.log (`Round ${round}!`);
 
-        rpsGame(playerSelection(), computerSelection()); 
+        rpsGame(playerSelection(), computerSelection())
         
         alert (`The current score is: \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
         console.log (`The current score is: \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
+
+        ++round;
     }
 
     if (playerScore == 3){
