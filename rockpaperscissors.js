@@ -41,3 +41,73 @@ function computerSelection(){
     }
     
 }
+
+//Rock Paper Scissors Game function
+
+function rpsGame(playerSelection, computerSelection){
+
+    if (playerSelection == "Rock" && computerSelection == "Scissors"){
+        alert("You Won! Rock beats Scissors!");
+        console.log ("You won this round!");
+        ++playerScore;
+    }
+
+    else if (playerSelection == "Paper" && computerSelection == "Rock"){
+
+        alert("You Won! Paper beats Rock!");
+        console.log ("You won this round!");
+        ++playerScore;
+    }
+
+    else if (playerSelection == "Scissors" && computerSelection == "Paper"){
+
+        alert("You Won! Scissors beats Paper!");
+        console.log ("You won this round!");
+        ++playerScore;
+    }
+
+    else if (playerSelection == computerSelection){
+        alert(`You both chose ${playerSelection}! No points awarded this round.`);
+        console.log (`Draw. Both players chose ${playerSelection}.`);
+    }
+    else{
+        alert(`You Lost!  The computer beat your ${playerSelection} with ${computerSelection}!`);
+        ++computerScore;
+    }
+}
+
+//Introduce rounds with a first to 3 points wins scoring system
+
+function rockPaperScissors(){
+
+    let playerScore = 0;
+    let computerScore = 0;
+    let round = 1;
+
+    while (playerScore < 3 || computerScore < 3){
+
+        playerScore = 0;
+        computerScore = 0;
+        round = 1;
+
+        alert (`Round ${round}!`);
+        console.log (`Round ${round}!`);
+
+        rpsGame(playerSelection(), computerSelection()); 
+        
+        alert (`The current score is: \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
+        console.log (`The current score is: \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
+    }
+
+    if (playerScore == 3){
+        alert (`Congratulations! You beat the computer ${playerScore} to ${computerScore}!`);
+        console.log (`You won ${playerScore} - ${computerScore}`);
+    }
+    else{
+        alert(`Loser! The computer beat you ${computerScore} to ${playerScore}!`);
+        console.log (`You lost ${computerScore} - ${playerScore}`);
+    }
+
+}
+
+rockPaperScissors();
