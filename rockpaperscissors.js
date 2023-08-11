@@ -4,7 +4,23 @@
 
 function caseCorrection(string){
     let temp = string[0].toUpperCase() + string.slice(1).toLowerCase();
-    console.log (temp);
+    console.log (`Corrected string to: ${temp}`);
     return temp;
+}
+
+//Player input function
+
+function playerSelection() {
+    let selection = caseCorrection(prompt("What do you choose?: \n'Rock' \n'Paper' \n'Scissors'"));
+
+    if (selection == "Rock" || selection == "Paper" || selection == "Scissors"){
+
+    console.log (`Player chose: ${selection}`);
+    return selection;
+    }
+    else{
+        alert("You must choose 'Rock', 'Paper' or 'Scissors'.  Try again.");
+        playerSelection();
+    }
 }
 
