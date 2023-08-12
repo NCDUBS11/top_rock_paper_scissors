@@ -13,16 +13,13 @@ function caseCorrection(string){
 function playerSelection() {
     let selection = caseCorrection(prompt("What do you choose?: \n'Rock' \n'Paper' \n'Scissors'"));
 
-    if (selection == "Rock" || selection == "Paper" || selection == "Scissors"){
+    while (selection != "Rock" && selection != "Paper" && selection != "Scissors"){
 
-    console.log (`Player chose: ${selection}`);
-    return selection;
-    }
-    else{
         alert("You must choose 'Rock', 'Paper' or 'Scissors'.  Try again.");
         return playerSelection();
     }
-
+    console.log (`Player chose: ${selection}`);
+    return selection;
 }
 
 //Computer selection function
@@ -42,38 +39,38 @@ function computerSelection(){
     }      
 }
 
-//Rock Paper Scissors Game function
+//Rock Paper Scissors Round function
 
 function rpsGame(playerSelection, computerSelection){
 
     if (playerSelection == "Rock" && computerSelection == "Scissors"){
         alert("You Won! Rock beats Scissors!");
         console.log ("You won this round!");
-        return true;
+        return "Player";
     }
 
     else if (playerSelection == "Paper" && computerSelection == "Rock"){
 
         alert("You Won! Paper beats Rock!");
         console.log ("You won this round!");
-        return true;
+        return "Player";
     }
 
     else if (playerSelection == "Scissors" && computerSelection == "Paper"){
 
         alert("You Won! Scissors beats Paper!");
         console.log ("You won this round!");
-        return true;
+        return "Player";
     }
 
     else if (playerSelection == computerSelection){
         alert(`You both chose ${playerSelection}! No points awarded this round.`);
         console.log (`Draw. Both players chose ${playerSelection}.`);
-        return null;
+        return "Draw";
     }
     else{
         alert(`You Lost!  The computer beat your ${playerSelection} with ${computerSelection}!`);
-        return false;
+        return "Computer";
     }
 }
 
@@ -85,12 +82,21 @@ function rockPaperScissors(){
     let computerScore = 0;
     let round = 1;
 
-    while (playerScore < 3 || computerScore < 3){
+    while (playerScore < 3 && computerScore < 3){
 
         alert (`Round ${round}!`);
         console.log (`Round ${round}!`);
 
-        rpsGame(playerSelection(), computerSelection());
+        switch (rpsGame(playerSelection(), computerSelection())){
+            case "Player": 
+                ++playerScore;
+                break;
+            case "Computer": 
+                ++computerScore;
+                break;
+            case "Draw": 
+                break;
+        }
 
         
         alert (`The current score is: \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
