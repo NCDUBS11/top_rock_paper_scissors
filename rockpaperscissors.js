@@ -1,119 +1,159 @@
-//Rock, Paper and Scissors Game played via prompts with all outputs directed to the console
+let playerScore = 0;
+let computerScore = 0;
 
-//Function to take player input and ensure only first letter is capitalized
+const playBtn = document.querySelector(".play");
+const playAgainBtn = document.querySelector(".playAgain");
 
-function caseCorrection(string){
-    if (string == ""){ return null; }
-    let temp = string[0].toUpperCase() + string.slice(1).toLowerCase();
-    return temp;
-}
+const playerScore_span = document.querySelector(".playerScore");
+const computerScore_span = document.querySelector(".computerScore");
 
-//Player input function
+playerScore_span.innerText = playerScore;
+computerScore_span.innerText = computerScore;
 
-function playerSelection() {
-    let selection = caseCorrection(prompt("What do you choose?: \n'Rock' \n'Paper' \n'Scissors'"));
+const playerImage = document.querySelector(".playerImage");
+const computerImage = document.querySelector(".computerImage");
 
-    while (selection != "Rock" && selection != "Paper" && selection != "Scissors"){
+const playerName = document.querySelector(".playerName");
+const computerName = document.querySelector(".computerName");
 
-        alert("You must choose 'Rock', 'Paper' or 'Scissors'.  Try again.");
-        return playerSelection();
-    }
-    console.log (`Player chose: ${selection}`);
-    return selection;
-}
+const rock =document.querySelector(".rock");
+const paper =document.querySelector(".paper");
+const scissors =document.querySelector(".scissors");
 
-//Computer selection function
+main();
 
-function computerSelection(){
-    let selection = Math.floor(Math.random()*(4-1)+1);
-    switch (selection) {
-    case 1:
-        console.log ("Computer chose: Rock");
-        return "Rock";
-    case 2:
-        console.log ("Computer chose: Paper");
-        return "Paper";
-    case 3:
-        console.log ("Computer chose: Scissors");
-        return "Scissors";
-    }      
-}
+function main() {
 
-//Rock Paper Scissors Round function
+    playBtn.addEventListener("click", () => {
+        document.querySelector(".startBoard").style.display = "none";
+        document.querySelector("footer").style.visibility = "visible";
+    })
 
-function rpsGame(playerSelection, computerSelection){
+    rock.addEventListener("click", () => {
+        round("rock");
+    })
 
-    if (playerSelection == "Rock" && computerSelection == "Scissors"){
-        alert("You Won! Rock beats Scissors!");
-        console.log ("You won this round!");
-        return "Player";
-    }
+    paper.addEventListener("click", () => {
+        round("paper");
+    })
 
-    else if (playerSelection == "Paper" && computerSelection == "Rock"){
+    scissors.addEventListener("click", () => {
+        round("scissors");
+    })
 
-        alert("You Won! Paper beats Rock!");
-        console.log ("You won this round!");
-        return "Player";
-    }
 
-    else if (playerSelection == "Scissors" && computerSelection == "Paper"){
-
-        alert("You Won! Scissors beats Paper!");
-        console.log ("You won this round!");
-        return "Player";
-    }
-
-    else if (playerSelection == computerSelection){
-        alert(`You both chose ${playerSelection}! No points awarded this round.`);
-        console.log (`Draw. Both players chose ${playerSelection}.`);
-        return "Draw";
-    }
-    else{
-        alert(`You Lost!  The computer beat your ${playerSelection} with ${computerSelection}!`);
-        return "Computer";
-    }
-}
-
-//Introduce multiple rounds with a first to 3 points wins scoring system
-
-function rockPaperScissors(){
-
-    let playerScore = 0;
-    let computerScore = 0;
-    let round = 1;
-
-    while (playerScore < 3 && computerScore < 3){
-
-        alert (`Round ${round}!`);
-        console.log (`Round ${round}!`);
-
-        switch (rpsGame(playerSelection(), computerSelection())){
-            case "Player": 
-                ++playerScore;
-                break;
-            case "Computer": 
-                ++computerScore;
-                break;
-            case "Draw": 
-                break;
-        }
-
-        
-        alert (`The current score is: \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
-        console.log (`The current score is: \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
-
-        ++round;
-    }
-
-    if (playerScore == 3){
-        alert (`Congratulations! You beat the computer ${playerScore} to ${computerScore}!`);
-        console.log (`You won ${playerScore} - ${computerScore}`);
-    }
-    else{
-        alert(`Loser! The computer beat you ${computerScore} to ${playerScore}!`);
-        console.log (`You lost ${computerScore} - ${playerScore}`);
-    }
 
 }
 
-rockPaperScissors();
+
+function round(playerChoice){
+    const computerChoice = getComputerChoice();
+
+    switch (playerChoice + computerChoice){
+        case "rockscissors":
+        case "paperrock":
+        case "scissorspaper":
+            win(playerChoice, computerChoice);
+            scoreCheck();
+            break;
+
+        case "scissorsrock":
+        case "rockpaper":
+        case "paperscissors":
+            lose(playerChoice, computerChoice);
+            scoreCheck();
+            break;
+
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+            draw(playerChoice, computerChoice);
+            scoreCheck();
+            break;
+    }
+}
+
+
+function getComputerChoice() {
+    let choices = ["rock", "paper", "scissors"];
+    let selection = Math.floor(Math.random()*3);
+    return choices[selection];
+    }
+
+
+function win(playerChoice, computerChoice) {
+    playerScore++;
+    playerScore_span.innerText = playerScore;
+    computerScore_span.innerText = computerScore;
+    playerImage.src = `/images/${playerChoice}.png`;
+    playerImage.style.visibility = "visible";
+    computerImage.src = `/images/${computerChoice}.png`;
+    computerImage.style.visibility = "visible";
+    playerName.classList.add("winAnimation");
+    setTimeout(()=>{playerName.classList.remove("winAnimation")},500);
+    computerName.classList.add("loseAnimation");
+    setTimeout(()=>{computerName.classList.remove("loseAnimation")},500);
+}
+
+
+function lose(playerChoice, computerChoice) {
+    computerScore++;
+    playerScore_span.innerText = playerScore;
+    computerScore_span.innerText = computerScore;
+    playerImage.src = `/images/${playerChoice}.png`;
+    playerImage.style.visibility = "visible";
+    computerImage.src = `/images/${computerChoice}.png`;
+    computerImage.style.visibility = "visible";
+    computerName.classList.add("winAnimation");
+    setTimeout(()=>{computerName.classList.remove("winAnimation")},500);
+    playerName.classList.add("loseAnimation");
+    setTimeout(()=>{playerName.classList.remove("loseAnimation")},500);
+}
+
+
+function draw(playerChoice, computerChoice) {
+    playerImage.src = `/images/${playerChoice}.png`;
+    playerImage.style.visibility = "visible";
+    computerImage.src = `/images/${computerChoice}.png`;
+    computerImage.style.visibility = "visible";
+    computerName.classList.add("drawAnimation");
+    setTimeout(()=>{computerName.classList.remove("drawAnimation")},500);
+    playerName.classList.add("drawAnimation");
+    setTimeout(()=>{playerName.classList.remove("drawAnimation")},500);
+}
+
+
+function scoreCheck(){
+    if (playerScore == 10){
+        document.querySelector("footer").style.visibility = "hidden";
+        document.querySelector(".end").innerText = "Congrats! You win!!!"
+        document.querySelector(".endBoard").style.display = "block";
+        playAgainBtn.addEventListener("click", () => {
+            document.querySelector("footer").style.visibility = "visible";
+            document.querySelector(".endBoard").style.display = "none";
+            playerScore = 0;
+            computerScore = 0;
+            window.location.reload();
+            return false;
+        })
+    }
+    
+    else if (computerScore == 10){
+        document.querySelector("footer").style.visibility = "hidden";
+        document.querySelector(".end").innerText = "Ouch. You Lost..."
+        document.querySelector(".endBoard").style.display = "block";
+        playAgainBtn.addEventListener("click", () => {
+            document.querySelector("footer").style.visibility = "visible";
+            document.querySelector(".endBoard").style.display = "none";
+            playerScore = 0;
+            computerScore = 0;
+            window.location.reload();
+            return false;
+        })
+    }
+}
+
+
+
+
+

@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+  
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 32px;
+    color: white;
+  }
+
+body{
+  background-color: rgb(10,20,80);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  max-width: 1250px;
+}
+
+img{
+  max-width: 100%;
+}
+
+.scoreBoard{
+  margin: 40px 0 0 0;
+  width: 400px;
+  height: 150px;
+  font-size: 3rem;
+  font-weight: bold;
+  border: 3px solid white;
+  border-radius: 30%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.scoreArea{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 20px;
+}
+
+#name {
+  font-weight: bold;
+  font-size: 0.75rem;
+  position: absolute;
+}
+
+.playerName{
+  top: 57px;
+  left: -10px;
+  transform: rotate(-90deg);
+}
+
+.computerName{
+  top: 56px;
+  right: -10px;
+  transform: rotate(90deg);
+}
+
+#score {
+  font-size: 3rem;
+  font-weight: bold;
+
+}
+
+main{
+  display: flex;
+  margin: 10px 0;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  /* border: 3px solid white;
+  border-radius: 50px; */
+  padding: 45px;
+}
+
+#selection {
+  /* border: 3px solid white;
+  border-radius: 50%; */
+  width: 350px;
+  padding: 65px 0;
+}
+
+#image {
+  width: 350px;
+}
+
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 80px;
+}
+
+#choice{
+  width: 175px;
+  transition: all 0.2s ease-in-out;
+}
+
+#choice:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#choice .rock:active{
+  background-color: rgb(241, 186, 67);
+  transition: all 0.025s ease-in-out;
+}
+
+#choice .paper:active{
+  background-color: rgb(93, 230, 40);
+  transition: all 0.025s ease-in-out;
+}
+
+#choice .scissors:active{
+  background-color: rgb(204, 0, 255);
+  transition: all 0.025s ease-in-out;
+}
+
+#choice .rock{
+  border: 3px solid rgb(228, 125, 29);
+  border-radius: 50%;
+  padding: 35px 0;
+}
+
+#choice .paper{
+  border: 3px solid rgb(239, 255, 12);
+  border-radius: 50%;
+  padding: 35px 0;
+}
+
+#choice .scissors{
+  border: 3px solid rgb(255, 67, 246);
+  border-radius: 50%;
+  padding: 35px 0;
+}
+
+.winAnimation{
+  color: rgb(0, 173, 0);;
+}
+
+.loseAnimation{
+  color: rgb(150, 0, 0);
+}
+
+.drawAnimation{
+  color: rgb(172, 172, 172);
+}
+
+.startBoard{
+  min-width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.intro{
+  font-size: 1.25rem;
+  line-height: 1.7rem;
+  text-align: center;
+  text-justify: center;
+  margin: 0 0 30px 0;
+}
+
+.play{
+  font-size: 1rem;
+  font-weight: bold;
+  width: 250px;
+  background: rgb(3, 1, 122);
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.15s ease-in-out;
+}
+
+.play:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.play:active{
+  background: rgb(0, 129, 172);
+}
+
+.endBoard{
+  min-width: 400px;
+  background-color: rgb(10,20,80);
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.end{
+  font-size: 1.25rem;
+  text-align: center;
+  text-justify: center;
+  margin: 0 0 30px 0;
+}
+
+.playAgain{
+  display:block;
+  margin: auto;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 250px;
+  background: rgb(3, 1, 122);
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.15s ease-in-out;
+}
+
+.playAgain:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.playAgain:active{
+  background: rgb(0, 129, 172);
+}
+

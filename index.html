@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors!</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+            <div class = "scoreBoard">
+                <div id = "name" class="playerName">Player</div>
+                <div id = "name" class="computerName">Robot</div>
+                <div class = scoreArea>
+                    <span id = "score" class="playerScore"></span><span id = score>-</span><span id = "score" class="computerScore"></span>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <main>
+            <div id = selection class="playerSelection">
+                <img id = image class="playerImage" style="visibility:hidden" src="/images/rock.png">
+            </div>
+            <div id = selection class="computerSelection">
+                <img id = image class="computerImage" style="visibility:hidden" src="/images/rock.png">
+            </div>
+        </main>
+    </div>
+
+    <div class="container">
+        <footer style="visibility:hidden">
+            <div id="choice">
+                <img draggable="false" class="rock" src="/images/rock.png" alt="rock image">
+            </div>
+            <div id="choice">
+                <img draggable="false" class="paper" src="/images/paper.png" alt="paper image">
+            </div>
+            <div id="choice">
+                <img draggable="false" class="scissors" src="/images/scissors.png" alt="scissors image">
+            </div>
+        </footer>
+    </div>
+
+    <div class="startBoard">
+        <h1 class="intro">Rock Paper Scissors. <br>First to 10 wins.<br>Good Luck!</h1>
+        <button class="play">Start</button>
+    </div>
+
+    <div class="endBoard" style="display:none">
+        <h1 class="end"></h1>
+        <button class="playAgain">Play Again</button>
+
+    </div>
 
 
-    <script src="rockpaperscissors.js"></script>
+<script src="rockpaperscissors.js"></script>
 </body>
 </html>

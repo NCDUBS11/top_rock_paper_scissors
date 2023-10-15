@@ -1,2 +1,3 @@
 # top_rock_paper_scissors
-First JavaScript program that runs from console.  To be updated with a GUI at a later date.
+
+Second iteration of the console-based rock paper scissors game.  This time with a UI.
