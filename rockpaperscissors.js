@@ -85,9 +85,9 @@ function win(playerChoice, computerChoice) {
     playerScore++;
     playerScore_span.innerText = playerScore;
     computerScore_span.innerText = computerScore;
-    playerImage.src = `/images/${playerChoice}.png`;
+    playerImage.src = `images/${playerChoice}.png`;
     playerImage.style.visibility = "visible";
-    computerImage.src = `/images/${computerChoice}.png`;
+    computerImage.src = `images/${computerChoice}.png`;
     computerImage.style.visibility = "visible";
     playerName.classList.add("winAnimation");
     setTimeout(()=>{playerName.classList.remove("winAnimation")},500);
@@ -100,9 +100,9 @@ function lose(playerChoice, computerChoice) {
     computerScore++;
     playerScore_span.innerText = playerScore;
     computerScore_span.innerText = computerScore;
-    playerImage.src = `/images/${playerChoice}.png`;
+    playerImage.src = `images/${playerChoice}.png`;
     playerImage.style.visibility = "visible";
-    computerImage.src = `/images/${computerChoice}.png`;
+    computerImage.src = `images/${computerChoice}.png`;
     computerImage.style.visibility = "visible";
     computerName.classList.add("winAnimation");
     setTimeout(()=>{computerName.classList.remove("winAnimation")},500);
@@ -112,9 +112,9 @@ function lose(playerChoice, computerChoice) {
 
 
 function draw(playerChoice, computerChoice) {
-    playerImage.src = `/images/${playerChoice}.png`;
+    playerImage.src = `images/${playerChoice}.png`;
     playerImage.style.visibility = "visible";
-    computerImage.src = `/images/${computerChoice}.png`;
+    computerImage.src = `images/${computerChoice}.png`;
     computerImage.style.visibility = "visible";
     computerName.classList.add("drawAnimation");
     setTimeout(()=>{computerName.classList.remove("drawAnimation")},500);
